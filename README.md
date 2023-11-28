@@ -13,9 +13,9 @@ npm install -g apifox-import-cli
 ## 使用
 ### 获取token与项目id
 
-![apiToken](.\doc\17011415754335.png)
+![apiToken](./doc/17011415754335.png "apiToken")
 
-![项目id](.\doc\17011415361904.png)
+![项目id](./doc/17011415361904.png "项目id")
 
 ### 在需要上传的文件夹下创建一个 apifox_import.yml配置文件 然后执行命令
 ``` base
