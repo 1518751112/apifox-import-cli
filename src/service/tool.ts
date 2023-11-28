@@ -32,21 +32,24 @@ export class Tool {
         if(!urls||!token||!projectID){
             this.log('参数缺失')
         }
-        const urlregex = new RegExp("^(http|https|ftp)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*$");
         if(Array.isArray(urls)){
             for (let i = 0; i < urls.length; i++) {
-                const temp = urls[i]
-                if(urlregex.test(temp.url)){
+                const {url,dir} = urls[i]
+                if(url){
                     try {
-                        const {data} = await axios.get('http://127.0.0.1:15030/doc/client-json')
-                        if(temp.dir){
+                        const {data} = await axios.get(url)
+                        if(dir){
                             //处理文件目录
                             const paths = Object.keys(data.paths)
                             paths.forEach(path=>{
                                 const temp = data.paths[path]
                                 const method = Object.keys(temp)
                                 method.forEach(m=>{
-                                    temp[m]['x-apifox-folder'] = temp.dir+'/'+temp[m].tags[0]
+                                    if(temp[m].tags)
+                                        temp[m]['x-apifox-folder'] = dir+'/'+temp[m].tags[0]
+                                    else{
+                                        temp[m]['x-apifox-folder'] = dir
+                                    }
                                 })
                             })
                         }
@@ -66,9 +69,9 @@ export class Tool {
                             }
                         })
 
-                        this.log(i+1,temp.dir||'',temp.url,'success')
+                        this.log(i+1,dir||'',url,'success')
                     }catch (e) {
-                        this.log(i+1,temp.dir||'',temp.url,'fail')
+                        this.log(i+1,dir||'',url,e.message)
                     }
 
                 }
