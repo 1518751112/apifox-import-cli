@@ -1,0 +1,40 @@
+{
+  "name": "apifox-import-cli",
+  "version": "1.0.0",
+  "description": "使用脚本命令将swagger文档导入到apifox中",
+  "main": "./dist/src/index.js",
+  "bin": {
+    "apifox-import": "./dist/bin/initiate.js"
+  },
+  "scripts": {
+    "serve": "npm run dev",
+    "dev": "tsc",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1518751112/apifox-import-cli.git"
+  },
+  "keywords": [
+    "apifox",
+    "import",
+    "cli"
+  ],
+  "author": "tg1518",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1518751112/apifox-import-cli/issues"
+  },
+  "homepage": "https://github.com/1518751112/apifox-import-cli#readme",
+  "files": [
+    "dist"
+  ]
+}

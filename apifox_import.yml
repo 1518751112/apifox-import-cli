@@ -1,0 +1,7 @@
+token: "11" # apifox token
+projectID: "11" # 项目的id
+urls:
+- url: ""
+  dir: ""
+- url: ""
+  dir: ""
